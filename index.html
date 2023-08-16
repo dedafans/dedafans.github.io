@@ -9,7 +9,7 @@
       function show(name) {
         let a = document.getElementById("art");
         let b = document.getElementById("index");
-        a.innerHTML = marked(loadFile(`/articles/${name}.md`));
+        a.innerHTML = marked.parse(loadFile(`/articles/${name}.md`));
         b.style.display = false;
         a.style.display = true;
       }
