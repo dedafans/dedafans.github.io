@@ -10,15 +10,15 @@
         let a = document.getElementById("art");
         let b = document.getElementById("index");
         a.innerHTML = marked.parse(loadFile(`/articles/${name}.md`));
-        b.style.display = false;
-        a.style.display = true;
+        b.style.display = "none";
+        a.style.display = "block";
       }
 
       function ret() {
         let a = document.getElementById("art");
         let b = document.getElementById("index");
-        a.style.display = false;
-        b.style.display = true;
+        a.style.display = "none";
+        b.style.display = "block";
       }
   </script>
   
