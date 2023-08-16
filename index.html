@@ -17,7 +17,7 @@
     document.addEventListener('DOMContentLoaded', getArticles());
 
     function getArticles() {
-      let a = loadFile(arts);
+      let a = loadFile("/arts");
       let lines = a.split('\n');
       let box = document.getElementById("index");
 
