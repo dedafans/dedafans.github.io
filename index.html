@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>dedafan's blog</title>
+  <script src="/source/main.js"></script>
+</head>
+
+<body>
+  <br /> &ensp;&ensp;
+  <a href="javascript:ret()">目录</a> &ensp;&ensp;
+  <a href="javascript:show(about)">关于</a> <br />
+  <div id="index"></div>
+  <div id="art"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', getArticles());
+
+    function getArticles() {
+      let a = loadFile(arts);
+      let lines = a.split('\n');
+      let box = document.getElementById("index");
+
+      for (let s of lines) {
+        s = s.trim().split(' ');
+        box.innerHTML += `<a href="javascript:show(${s[0]})">${s[1]} <i>${s[0]}</i></a><br />`;
+      }
+
+      function show(name) {
+        let a = document.getElementById("art");
+        let b = document.getElementById("index");
+        a.innerHTML = marked(loadFile(`/articles/${name}.md`));
+        b.style.display = false;
+        a.style.display = true;
+      }
+
+      function ret() {
+        let a = document.getElementById("art");
+        let b = document.getElementById("index");
+        a.style.display = false;
+        b.style.display = true;
+      }
+    }
+  </script>
+</body>
+
+</html>
