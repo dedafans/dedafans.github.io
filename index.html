@@ -4,44 +4,6 @@
 <head>
   <title>dedafan's blog</title>
   <script src="/source/main.js"></script>
-
-  <script>
-
-      document.addEventListener('onload', getArticles());
-
-      function getArticles() {
-        let a = loadFile("/arts");
-        let lines = a.split('\n');
-        let box = document.getElementById("index");
-  
-        for (let s of lines) {
-          s = s.trim();
-          if(s.length == 0) {
-            continue;
-          }
-          s = s.split(' ');
-          box.innerHTML += `<a href="javascript:show('${s[2]}')">${s[1]} <i>${s[0]}</i></a><br />`;
-        }
-      }
-    
-      function show(name) {
-        let a = document.getElementById("art");
-        let b = document.getElementById("index");
-        a.innerHTML = marked.parse(loadFile(`/articles/${name}.md`));
-        b.style.display = "none";
-        a.style.display = "block";
-      }
-
-      function ret() {
-        let a = document.getElementById("art");
-        let b = document.getElementById("index");
-        a.style.display = "none";
-        b.style.display = "block";
-      }
-
-      
-  </script>
-  
 </head>
 
 <body>
@@ -51,6 +13,43 @@
   <div id="index"></div>
   <div id="art" class="markdown-body"></div>
 
+<script>
+
+    document.addEventListener('onload', getArticles());
+
+    function getArticles() {
+      let a = loadFile("/arts");
+      let lines = a.split('\n');
+      let box = document.getElementById("index");
+
+      for (let s of lines) {
+        s = s.trim();
+        if(s.length == 0) {
+          continue;
+        }
+        s = s.split(' ');
+        box.innerHTML += `<a href="javascript:show('${s[2]}')">${s[1]} <i>${s[0]}</i></a><br />`;
+      }
+    }
+  
+    function show(name) {
+      let a = document.getElementById("art");
+      let b = document.getElementById("index");
+      a.innerHTML = marked.parse(loadFile(`/articles/${name}.md`));
+      b.style.display = "none";
+      a.style.display = "block";
+    }
+
+    function ret() {
+      let a = document.getElementById("art");
+      let b = document.getElementById("index");
+      a.style.display = "none";
+      b.style.display = "block";
+    }
+
+    
+</script>
+  
 </body>
 
 </html>
